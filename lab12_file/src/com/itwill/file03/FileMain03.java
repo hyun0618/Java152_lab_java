@@ -29,18 +29,19 @@ public class FileMain03 {
 		FileOutputStream out = null;
 		BufferedOutputStream bout = null;
 		try {
-			in = new FileInputStream(orgin);
-			bin = new BufferedInputStream(in);
+			in = new FileInputStream(orgin); // 하드디스크에 (속도 느림)
+			bin = new BufferedInputStream(in); // 메모리에 (속도 빠름)
+		// => bin = new BufferedInputStream(new FileInputStream(orgin));
 			
-			out = new FileOutputStream(dest);
-			bout = new BufferedOutputStream(out);
-			
+			out = new FileOutputStream(dest); // 하드디스크에
+			bout = new BufferedOutputStream(out); // 메모리에
+ 			
 			long start = System.currentTimeMillis(); // 복사 시작 시간 측정
 			
 			while (true) {
 				byte[] buffer = new byte[4 * 1024]; // 파일에서 읽을 내용을 저장할 배열
-				int b = bin.read(buffer);
-				if (b == -1) {
+				int b = bin.read(buffer); // 메모리에서 배열 크기만큼 
+				if (b == -1) { // EOF
 					break;
 				}
 				bout.write(buffer, 0, b);
