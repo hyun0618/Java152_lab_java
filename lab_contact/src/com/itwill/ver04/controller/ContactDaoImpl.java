@@ -15,8 +15,13 @@ public class ContactDaoImpl implements ContactDao {
 	private static ContactDaoImpl instance = null;
 	
 	private ContactDaoImpl() {
-		FileUtil.initializeDataDir();
-		contacts = FileUtil.initializeData();
+		// 데이터 폴더 초기화: 폴더가 없으면 새로 만듦.
+//		FileUtil.initializeDataDir();
+		initializeDataDir(); // FileUtil. 생략 가능 
+		
+		// 연락처 데이터 초기화: 데이터 파일에서 리스트를 읽어오거나, 빈 리스트를 생성.
+//		contacts = FileUtil.initializeData();
+		contacts = initializeData(); // FileUtil. 생략 가능
 	}
 	
 	public static ContactDaoImpl getInstance() {
@@ -25,40 +30,63 @@ public class ContactDaoImpl implements ContactDao {
 		}
 		return instance;
 	}
-	
 	// --- singleton
 	
 	private List<Contact> contacts; 
 	
+	/**
+	 * 인덱스가 연락처 리스트에 유효한 범위 안에 있는지 리턴.
+	 * @param index 검사할 인덱스
+	 * @return 유효한 인덱스이면 true, 그렇지 않으면 false.
+	 */
+	public boolean isValidIndex(int index) {
+		return (index >= 0) && (index < contacts.size());
+	}
+	
 	
 	@Override
 	public int create(Contact contact) {
-		// TODO Auto-generated method stub
-		return 0;
+		contacts.add(contact); // 리스트(메모리)에 추가 
+		writeDataToFile(contacts); // 파일에 씀. 
+		
+		return 1;
 	}
 
 	@Override
 	public List<Contact> read() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return contacts;		
 	}
 
 	@Override
 	public Contact read(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		if (isValidIndex(index)) {
+			return contacts.get(index);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
 	public int update(int index, Contact contact) {
-		// TODO Auto-generated method stub
-		return 0;
+		if (!isValidIndex(index)) {
+			return 0;
+		}
+		contacts.set(index, contact);
+		writeDataToFile(contacts); // -> 바뀐 리스트의 내용을 파일에 저장. 
+		 
+		return 1;		
 	}
 
 	@Override
 	public int delete(int index) {
-		// TODO Auto-generated method stub
-		return 0;
+		if (isValidIndex(index)) {
+			contacts.remove(index);
+			writeDataToFile(contacts);
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 }
