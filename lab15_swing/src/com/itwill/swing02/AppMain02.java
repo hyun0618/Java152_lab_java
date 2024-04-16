@@ -15,6 +15,7 @@ public class AppMain02 {
 	private JFrame frame;
 	private JLabel lblMessage;
 	private JTextField textInput;
+	private JButton btnInput; // local <-> field 설정 가능. 
 
 	/**
 	 * Launch the application.
@@ -59,7 +60,7 @@ public class AppMain02 {
 		frame.getContentPane().add(textInput);
 		textInput.setColumns(10);
 		
-		JButton btnInput = new JButton("입력"); // JButton 객체 생성 // btnInput: 지역변수
+		btnInput = new JButton("입력"); // JButton 객체 생성 // btnInput: 지역변수
 		
 		// 버튼에 ActionListener 이벤트 핸들러(리스너)를 설정(등록)
 		btnInput.addActionListener(new ActionListener() {
