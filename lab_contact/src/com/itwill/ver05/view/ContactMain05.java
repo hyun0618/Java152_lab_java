@@ -107,6 +107,15 @@ public class ContactMain05 implements CreateNotify, UpdateNotify { // implements
 		frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
 
 		table = new JTable();
+		
+		// 테이블 열 이름의 폰트 설정
+		table.getTableHeader().setFont(new Font("D2Coding", Font.PLAIN, 15));
+		
+		// 테이블 열 높이 설정.
+		table.setRowHeight(30);
+		
+		// 테이블의 입력된 데이터의 폰트 설정
+		table.setFont(new Font("D2Coding", Font.PLAIN, 15));
 		model = new DefaultTableModel(null, COLUMN_NAMES); // -(1)
 		table.setModel(model);
 		scrollPane.setViewportView(table);

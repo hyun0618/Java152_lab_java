@@ -101,6 +101,11 @@ public class ContactSearchFrame extends JFrame {
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 		
 		table = new JTable();
+		
+		table.getTableHeader().setFont(new Font("D2Coding", Font.PLAIN, 15));
+		table.setFont(new Font("D2Coding", Font.PLAIN, 15));
+		table.setRowHeight(30);
+		
 		model = new DefaultTableModel(null, COLUMN_NAMES);
 		table.setModel(model);
 		scrollPane.setViewportView(table);
@@ -113,11 +118,17 @@ public class ContactSearchFrame extends JFrame {
 		// DAO를 사용해서 검색어로 검색 결과를 가져오기.
 		List<Contact> list = dao.search(keyword);
 		
-		// 검색 결과를 테이블에 씀. 
+		// 검색 결과를 테이블에 씀.
+		model = new DefaultTableModel(null, COLUMN_NAMES); // 데이터 지우기.
+		
+		// 비워진 테이블 모델에 검색결과만 보여주기. 	
 		for (Contact c : list) {
 			Object[] row = { c.getName(), c.getPhone(), c.getEmail() };
 			model.addRow(row);
 		}
+		
+		// 테이블에 테이블 모델을 다시 세팅하기.
+		table.setModel(model);
 		
 	}
 
