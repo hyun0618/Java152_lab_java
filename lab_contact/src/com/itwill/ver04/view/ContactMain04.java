@@ -141,6 +141,7 @@ public class ContactMain04 {
 	        } else {
 	            System.out.println(">> 연락처 수정에 실패하였습니다.");
 	        }
+	        
 	}
 	
 	// [5] 삭제
