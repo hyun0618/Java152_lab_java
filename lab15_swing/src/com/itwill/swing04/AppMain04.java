@@ -77,8 +77,8 @@ public class AppMain04 {
 		btnPlus = new JButton("+");
 		btnPlus.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				handleButtonClick(e);
+			public void actionPerformed(ActionEvent e) { 
+				handleButtonClick(e); // handleButtonClick() 메서드에서 event 사용. 
 			}
 		});
 		btnPlus.setFont(new Font("D2Coding", Font.PLAIN, 20));
