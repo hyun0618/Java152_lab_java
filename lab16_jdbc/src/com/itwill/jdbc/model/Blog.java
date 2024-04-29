@@ -21,19 +21,19 @@ public class Blog {
 	private String title;
 	private String content;
 	private String writer;
-	private LocalDateTime createdtime ;
-	private LocalDateTime modifiedtime;
+	private LocalDateTime createdTime ;
+	private LocalDateTime modifiedTime;
 
 	public Blog() {}
 	
-	public Blog(int id, String title, String content, String writer, LocalDateTime createdtime,
-			LocalDateTime modifiedtime) {
+	public Blog(int id, String title, String content, String writer, LocalDateTime createdTime,
+			LocalDateTime modifiedTime) {
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.writer = writer;
-		this.createdtime = createdtime;
-		this.modifiedtime = modifiedtime;
+		this.createdTime = createdTime;
+		this.modifiedTime = modifiedTime;
 	}
 
 	public int getId() {
@@ -68,26 +68,26 @@ public class Blog {
 		this.writer = writer;
 	}
 
-	public LocalDateTime getCreatetime() {
-		return createdtime;
+	public LocalDateTime getCreateTime() {
+		return createdTime;
 	}
 
-	public void setCreatetime(LocalDateTime createdtime) {
-		this.createdtime = createdtime;
+	public void setCreatetime(LocalDateTime createdTime) {
+		this.createdTime = createdTime;
 	}
 
-	public LocalDateTime getModifiedtime() {
-		return modifiedtime;
+	public LocalDateTime getModifiedTime() {
+		return modifiedTime;
 	}
 
-	public void setModifiedtime(LocalDateTime modifiedtime) {
-		this.modifiedtime = modifiedtime;
+	public void setModifiedTime(LocalDateTime modifiedTime) {
+		this.modifiedTime = modifiedTime;
 	}
 
 	@Override
 	public String toString() {
-		return "Blog [id=" + id + ", title=" + title + ", content=" + content + ", writer=" + writer + ", createdtime="
-				+ createdtime + ", modifiedtime=" + modifiedtime + "]";
+		return "Blog [id=" + id + ", title=" + title + ", content=" + content + ", writer=" + writer + ", createdTime="
+				+ createdTime + ", modifiedTime=" + modifiedTime + "]";
 	}
 	
 }
